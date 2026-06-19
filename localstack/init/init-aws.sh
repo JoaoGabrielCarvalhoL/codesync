@@ -5,7 +5,7 @@ echo ">> Creating buckets for the development environment."
 
 EVIDENCES_BUCKET="codesync-task-evidences"
 ATTACHMENTS_BUCKET="codesync-task-attachments"
-RESOURCES_BUCKET="codesync-resources"
+RESOURCES_BUCKET="codesync-task-resources"
 
 echo ">> Creating buckets..."
 
