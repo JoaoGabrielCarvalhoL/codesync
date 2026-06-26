@@ -1,7 +1,6 @@
 package br.com.codesync.config;
 
 import br.com.codesync.client.KeycloakAdminManagementClient;
-import br.com.codesync.client.KeycloakAdminTokenClient;
 import br.com.codesync.interceptor.KeycloakAuthInterceptor;
 import br.com.codesync.service.IdentityProvider;
 import org.springframework.beans.factory.annotation.Value;
