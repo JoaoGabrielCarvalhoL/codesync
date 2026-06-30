@@ -40,6 +40,9 @@
       {
         "name": "ADMIN"
       },
+      {
+        "name": "MANAGER"
+      },
 	  {
 	    "name": "USER"
 	  }
