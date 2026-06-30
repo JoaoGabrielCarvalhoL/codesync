@@ -16,7 +16,7 @@ import java.util.Map;
 public class PingController {
 
     @GetMapping("/protected")
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN', 'MANAGER')")
     public ResponseEntity<Map<String, Object>> protectedPing(@AuthenticationPrincipal Jwt jwt) {
         Map<String, Object> response = new HashMap<>();
         response.put("status", "UP");
