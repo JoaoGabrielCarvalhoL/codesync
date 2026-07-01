@@ -4,7 +4,7 @@ import br.com.codesync.model.entity.User;
 
 import java.util.UUID;
 
-public class UserBuilder {
+public final class UserBuilder {
 
     private final User user;
 
@@ -20,7 +20,6 @@ public class UserBuilder {
         this.user.setId(id);
         return this;
     }
-
 
     public UserBuilder username(String username) {
         this.user.setUsername(username);

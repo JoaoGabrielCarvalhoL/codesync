@@ -21,7 +21,7 @@ public class Certification extends Auditable {
     private String issuer;
 
     @Column(length = 255)
-    private String certificationUrl;
+    private String certificateUrl;
 
     @Column(name = "credential_id", length = 100)
     private String credentialId;
@@ -36,11 +36,11 @@ public class Certification extends Auditable {
 
     public Certification() {}
 
-    public Certification(String name, String issuer, String certificationUrl, String credentialId,
+    public Certification(String name, String issuer, String certificateUrl, String credentialId,
                          LocalDate obtainedIn, LocalDate validUntil, ProfessionalProfile professionalProfile) {
         this.name = name;
         this.issuer = issuer;
-        this.certificationUrl = certificationUrl;
+        this.certificateUrl = certificateUrl;
         this.credentialId = credentialId;
         this.obtainedIn = obtainedIn;
         this.validUntil = validUntil;
@@ -71,12 +71,12 @@ public class Certification extends Auditable {
         this.issuer = issuer;
     }
 
-    public String getCertificationUrl() {
-        return certificationUrl;
+    public String getCertificateUrl() {
+        return certificateUrl;
     }
 
-    public void setCertificationUrl(String certificationUrl) {
-        this.certificationUrl = certificationUrl;
+    public void setCertificateUrl(String certificateUrl) {
+        this.certificateUrl = certificateUrl;
     }
 
     public String getCredentialId() {

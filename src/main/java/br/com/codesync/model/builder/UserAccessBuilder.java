@@ -6,7 +6,7 @@ import br.com.codesync.model.enumerations.AccessStatus;
 
 import java.util.UUID;
 
-public class UserAccessBuilder {
+public final class UserAccessBuilder {
 
     private final UserAccess userAccess;
 
