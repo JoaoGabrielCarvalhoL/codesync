@@ -48,7 +48,7 @@ public class ProfessionalProfile extends Auditable {
     private Integer capacityHoursPerWeek;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "professionalProfile", orphanRemoval = true)
-    private Set<ProfessionalSkill> skills = new HashSet<>();
+    private Set<ProfessionalSkill> professionalSkills = new HashSet<>();
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "professionalProfile", orphanRemoval = true)
     private Set<ProfessionalLanguage> professionalLanguages = new HashSet<>();
@@ -63,7 +63,7 @@ public class ProfessionalProfile extends Auditable {
     public ProfessionalProfile(String jobTitle, String graduation, SeniorityLevel seniorityLevel,
                                String professionalSummary, Integer yearsOfExperience, Set<Certification> certifications,
                                ProfessionalStatus professionalStatus, WorkMode workMode, Integer capacityHoursPerWeek,
-                               Set<ProfessionalSkill> skills, Set<ProfessionalLanguage> professionalLanguages, User user) {
+                               Set<ProfessionalSkill> professionalSkills, Set<ProfessionalLanguage> professionalLanguages, User user) {
         this.jobTitle = jobTitle;
         this.graduation = graduation;
         this.seniorityLevel = seniorityLevel;
@@ -73,7 +73,7 @@ public class ProfessionalProfile extends Auditable {
         this.professionalStatus = professionalStatus;
         this.workMode = workMode;
         this.capacityHoursPerWeek = capacityHoursPerWeek;
-        this.skills = skills;
+        this.professionalSkills = professionalSkills;
         this.professionalLanguages = professionalLanguages;
         this.user = user;
     }
@@ -158,12 +158,12 @@ public class ProfessionalProfile extends Auditable {
         this.capacityHoursPerWeek = capacityHoursPerWeek;
     }
 
-    public Set<ProfessionalSkill> getSkills() {
-        return skills;
+    public Set<ProfessionalSkill> getProfessionalSkills() {
+        return professionalSkills;
     }
 
-    public void setSkills(Set<ProfessionalSkill> skills) {
-        this.skills = skills;
+    public void setProfessionalSkills(Set<ProfessionalSkill> professionalSkills) {
+        this.professionalSkills = professionalSkills;
     }
 
     public Set<ProfessionalLanguage> getProfessionalLanguages() {

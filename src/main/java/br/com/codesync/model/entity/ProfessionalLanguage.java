@@ -19,7 +19,7 @@ public class ProfessionalLanguage extends Auditable {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "proficiency_level", nullable = false, length = 30)
-    private LanguageProficiency proficiencyLevel;
+    private LanguageProficiency languageProficiency;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "profile_id", nullable = false)
@@ -27,10 +27,10 @@ public class ProfessionalLanguage extends Auditable {
 
     public ProfessionalLanguage() {}
 
-    public ProfessionalLanguage(String name, LanguageProficiency proficiencyLevel,
+    public ProfessionalLanguage(String name, LanguageProficiency languageProficiency,
                                 ProfessionalProfile professionalProfile) {
         this.name = name;
-        this.proficiencyLevel = proficiencyLevel;
+        this.languageProficiency = languageProficiency;
         this.professionalProfile = professionalProfile;
     }
 
@@ -50,12 +50,12 @@ public class ProfessionalLanguage extends Auditable {
         this.name = name;
     }
 
-    public LanguageProficiency getProficiencyLevel() {
-        return proficiencyLevel;
+    public LanguageProficiency getLanguageProficiency() {
+        return languageProficiency;
     }
 
-    public void setProficiencyLevel(LanguageProficiency proficiencyLevel) {
-        this.proficiencyLevel = proficiencyLevel;
+    public void setLanguageProficiency(LanguageProficiency languageProficiency) {
+        this.languageProficiency = languageProficiency;
     }
 
     public ProfessionalProfile getProfessionalProfile() {

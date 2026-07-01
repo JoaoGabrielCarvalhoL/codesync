@@ -20,7 +20,7 @@ public class Contact extends Auditable {
     @Column(nullable = false)
     private String contactValue;
 
-    private Boolean notes;
+    private String notes;
 
     @Column(nullable = false)
     private String url;
@@ -31,7 +31,7 @@ public class Contact extends Auditable {
 
     public Contact() {}
 
-    public Contact(ContactType type, String contactValue, Boolean notes, String url, User user) {
+    public Contact(ContactType type, String contactValue, String notes, String url, User user) {
         this.type = type;
         this.contactValue = contactValue;
         this.notes = notes;
@@ -63,11 +63,11 @@ public class Contact extends Auditable {
         this.contactValue = contactValue;
     }
 
-    public Boolean getNotes() {
+    public String getNotes() {
         return notes;
     }
 
-    public void setNotes(Boolean notes) {
+    public void setNotes(String notes) {
         this.notes = notes;
     }
 
