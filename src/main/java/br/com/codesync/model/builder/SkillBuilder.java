@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public final class SkillBuilder {
 
-    private final Skill skill;
+    private Skill skill;
 
     public SkillBuilder() {
         this.skill = new Skill();
@@ -33,6 +33,8 @@ public final class SkillBuilder {
     }
 
     public Skill build() {
-        return this.skill;
+        Skill response = this.skill;
+        this.skill = new Skill();
+        return response;
     }
 }

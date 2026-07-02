@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public final class UserPreferenceBuilder {
 
-    private final UserPreference userPreference;
+    private UserPreference userPreference;
 
     private UserPreferenceBuilder() {
         this.userPreference = new UserPreference();
@@ -43,6 +43,8 @@ public final class UserPreferenceBuilder {
     }
 
     public UserPreference build() {
-        return this.userPreference;
+        UserPreference response = this.userPreference;
+        this.userPreference = new UserPreference();
+        return response;
     }
 }

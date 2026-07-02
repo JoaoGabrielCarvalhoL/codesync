@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public final class ProfessionalSkillBuilder {
 
-    private final ProfessionalSkill professionalSkill;
+    private ProfessionalSkill professionalSkill;
 
     public ProfessionalSkillBuilder() {
         this.professionalSkill = new ProfessionalSkill();
@@ -40,6 +40,8 @@ public final class ProfessionalSkillBuilder {
     }
 
     public ProfessionalSkill build() {
-        return this.professionalSkill;
+        ProfessionalSkill response = this.professionalSkill;
+        this.professionalSkill = new ProfessionalSkill();
+        return response;
     }
 }

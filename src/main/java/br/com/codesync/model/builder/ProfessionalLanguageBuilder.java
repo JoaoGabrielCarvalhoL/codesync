@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public final class ProfessionalLanguageBuilder {
 
-    private final ProfessionalLanguage professionalLanguage;
+    private ProfessionalLanguage professionalLanguage;
 
     private ProfessionalLanguageBuilder() {
         this.professionalLanguage = new ProfessionalLanguage();
@@ -39,6 +39,8 @@ public final class ProfessionalLanguageBuilder {
     }
 
     public ProfessionalLanguage build() {
-        return this.professionalLanguage;
+        ProfessionalLanguage response = this.professionalLanguage;
+        this.professionalLanguage = new ProfessionalLanguage();
+        return response;
     }
 }

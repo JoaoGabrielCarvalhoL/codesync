@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public final class AddressBuilder {
 
-    private final Address address;
+    private Address address;
 
     private  AddressBuilder() {
         this.address = new Address();
@@ -74,6 +74,8 @@ public final class AddressBuilder {
     }
 
     public Address build() {
-        return this.address;
+        Address response = this.address;
+        this.address = new Address();
+        return response;
     }
 }
