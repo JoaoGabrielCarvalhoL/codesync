@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public final class ContactBuilder {
 
-    private final Contact contact;
+    private Contact contact;
 
     private ContactBuilder() {
         this.contact = new Contact();
@@ -49,6 +49,8 @@ public final class ContactBuilder {
     }
 
     public Contact build() {
-        return this.contact;
+        Contact result = this.contact;
+        this.contact = new Contact();
+        return result;
     }
 }

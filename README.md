@@ -1,5 +1,5 @@
 [![Build Status](https://github.com/JoaoGabrielCarvalhoL/codesync/actions/workflows/ci-main.yml/badge.svg)](https://github.com/JoaoGabrielCarvalhoL/codesync/actions/workflows/ci-main.yml)  
-[![Coverage](https://img.shields.io/badge/coverage-0%25-red)](#)
+[![Coverage](https://img.shields.io/badge/coverage-71%25-green)](#)
 ![Status](https://img.shields.io/badge/status-under%20development-orange)
 
 ![Java](https://img.shields.io/badge/Java-25-blue.svg)

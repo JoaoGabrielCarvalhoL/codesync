@@ -6,7 +6,7 @@ import java.util.UUID;
 
 public final class UserBuilder {
 
-    private final User user;
+    private User user;
 
     private UserBuilder() {
         user = new User();
@@ -47,6 +47,8 @@ public final class UserBuilder {
     }
 
     public User build() {
-        return this.user;
+        User response = this.user;
+        this.user = new User();
+        return response;
     }
 }

@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public final class UserAccessBuilder {
 
-    private final UserAccess userAccess;
+    private UserAccess userAccess;
 
     private UserAccessBuilder() {
         this.userAccess = new UserAccess();
@@ -79,6 +79,8 @@ public final class UserAccessBuilder {
     }
 
     public UserAccess build() {
-        return this.userAccess;
+        UserAccess response = this.userAccess;
+        this.userAccess = new UserAccess();
+        return response;
     }
 }

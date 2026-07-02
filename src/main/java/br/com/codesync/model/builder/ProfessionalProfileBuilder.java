@@ -10,7 +10,7 @@ import java.util.UUID;
 
 public final class ProfessionalProfileBuilder {
 
-    private final ProfessionalProfile professionalProfile;
+    private ProfessionalProfile professionalProfile;
 
     private ProfessionalProfileBuilder() {
         this.professionalProfile = new ProfessionalProfile();
@@ -86,6 +86,8 @@ public final class ProfessionalProfileBuilder {
     }
 
     public ProfessionalProfile build() {
-        return this.professionalProfile;
+        ProfessionalProfile response = this.professionalProfile;
+        this.professionalProfile = new ProfessionalProfile();
+        return response;
     }
 }

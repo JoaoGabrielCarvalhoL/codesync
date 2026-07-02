@@ -48,6 +48,8 @@ public class NotificationSettingBuilder {
     }
 
     public NotificationSetting build() {
-        return this.notificationSetting;
+        NotificationSetting setting = this.notificationSetting;
+        this.notificationSetting = new NotificationSetting();
+        return setting;
     }
 }
