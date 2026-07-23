@@ -1,5 +1,6 @@
 package br.com.codesync.model.entity;
 
+import br.com.codesync.model.enumerations.ContractType;
 import br.com.codesync.model.enumerations.ProfessionalStatus;
 import br.com.codesync.model.enumerations.SeniorityLevel;
 import br.com.codesync.model.enumerations.WorkMode;
@@ -42,6 +43,10 @@ public class ProfessionalProfile extends Auditable {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
+    private ContractType contractType;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private WorkMode workMode;
 
     @Column(name = "weekly_capacity")
@@ -62,7 +67,7 @@ public class ProfessionalProfile extends Auditable {
 
     public ProfessionalProfile(String jobTitle, String graduation, SeniorityLevel seniorityLevel,
                                String professionalSummary, Integer yearsOfExperience, Set<Certification> certifications,
-                               ProfessionalStatus professionalStatus, WorkMode workMode, Integer capacityHoursPerWeek,
+                               ProfessionalStatus professionalStatus, ContractType contractType, WorkMode workMode, Integer capacityHoursPerWeek,
                                Set<ProfessionalSkill> professionalSkills, Set<ProfessionalLanguage> professionalLanguages, User user) {
         this.jobTitle = jobTitle;
         this.graduation = graduation;
@@ -71,6 +76,7 @@ public class ProfessionalProfile extends Auditable {
         this.yearsOfExperience = yearsOfExperience;
         this.certifications = certifications;
         this.professionalStatus = professionalStatus;
+        this.contractType = contractType;
         this.workMode = workMode;
         this.capacityHoursPerWeek = capacityHoursPerWeek;
         this.professionalSkills = professionalSkills;
@@ -140,6 +146,14 @@ public class ProfessionalProfile extends Auditable {
 
     public void setProfessionalStatus(ProfessionalStatus professionalStatus) {
         this.professionalStatus = professionalStatus;
+    }
+
+    public ContractType getContractType() {
+        return contractType;
+    }
+
+    public void setContractType(ContractType contractType) {
+        this.contractType = contractType;
     }
 
     public WorkMode getWorkMode() {
