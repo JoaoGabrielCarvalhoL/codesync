@@ -49,12 +49,6 @@ public class Project extends Auditable {
     @Column(name = "billing_type", nullable = false, length = 30)
     private BillingType billingType;
 
-    @Column(name = "repository_url", length = 255)
-    private String repositoryUrl;
-
-    @Column(name = "documentation_url", length = 255)
-    private String documentationUrl;
-
     @Column(name = "estimated_hours")
     private Integer estimatedHours;
 
@@ -87,13 +81,16 @@ public class Project extends Auditable {
     @OneToMany(mappedBy = "project", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<ProjectRequiredSkill> requiredSkills = new HashSet<>();
 
+    @OneToMany(mappedBy = "project", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<ProjectEnvironment> environments = new HashSet<>();
+
     public Project() {}
 
     public Project(String name, String slug, String description, ProjectStatus status, ProjectPriority priority,
-                   String contractCode, BillingType billingType, String repositoryUrl, String documentationUrl,
-                   Integer estimatedHours, Integer maxBillableHours, BigDecimal hourlyRate, Currency currency,
-                   LocalDate startDate, LocalDate targetEndDate, LocalDate actualEndDate, Organization organization,
-                   Set<ProjectMember> members, Set<ProjectRequiredSkill> requiredSkills) {
+                   String contractCode, BillingType billingType, Integer estimatedHours, Integer maxBillableHours,
+                   BigDecimal hourlyRate, Currency currency, LocalDate startDate, LocalDate targetEndDate,
+                   LocalDate actualEndDate, Organization organization, Set<ProjectMember> members,
+                   Set<ProjectRequiredSkill> requiredSkills, Set<ProjectEnvironment> environments) {
         this.name = name;
         this.slug = slug;
         this.description = description;
@@ -101,8 +98,6 @@ public class Project extends Auditable {
         this.priority = priority;
         this.contractCode = contractCode;
         this.billingType = billingType;
-        this.repositoryUrl = repositoryUrl;
-        this.documentationUrl = documentationUrl;
         this.estimatedHours = estimatedHours;
         this.maxBillableHours = maxBillableHours;
         this.hourlyRate = hourlyRate;
@@ -113,6 +108,7 @@ public class Project extends Auditable {
         this.organization = organization;
         this.members = members;
         this.requiredSkills = requiredSkills;
+        this.environments = environments;
     }
 
     public UUID getId() {
@@ -177,22 +173,6 @@ public class Project extends Auditable {
 
     public void setBillingType(BillingType billingType) {
         this.billingType = billingType;
-    }
-
-    public String getRepositoryUrl() {
-        return repositoryUrl;
-    }
-
-    public void setRepositoryUrl(String repositoryUrl) {
-        this.repositoryUrl = repositoryUrl;
-    }
-
-    public String getDocumentationUrl() {
-        return documentationUrl;
-    }
-
-    public void setDocumentationUrl(String documentationUrl) {
-        this.documentationUrl = documentationUrl;
     }
 
     public Integer getEstimatedHours() {
@@ -273,6 +253,14 @@ public class Project extends Auditable {
 
     public void setRequiredSkills(Set<ProjectRequiredSkill> requiredSkills) {
         this.requiredSkills = requiredSkills;
+    }
+
+    public Set<ProjectEnvironment> getEnvironments() {
+        return environments;
+    }
+
+    public void setEnvironments(Set<ProjectEnvironment> environments) {
+        this.environments = environments;
     }
 
     @Override
