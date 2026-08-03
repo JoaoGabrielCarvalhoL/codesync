@@ -40,8 +40,8 @@ public final class ProfessionalSkillBuilder {
     }
 
     public ProfessionalSkill build() {
-        ProfessionalSkill response = this.professionalSkill;
+        ProfessionalSkill result = this.professionalSkill;
         this.professionalSkill = new ProfessionalSkill();
-        return response;
+        return result;
     }
 }

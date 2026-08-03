@@ -74,8 +74,8 @@ public final class AddressBuilder {
     }
 
     public Address build() {
-        Address response = this.address;
+        Address result = this.address;
         this.address = new Address();
-        return response;
+        return result;
     }
 }

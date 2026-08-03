@@ -39,8 +39,8 @@ public final class ProfessionalLanguageBuilder {
     }
 
     public ProfessionalLanguage build() {
-        ProfessionalLanguage response = this.professionalLanguage;
+        ProfessionalLanguage result = this.professionalLanguage;
         this.professionalLanguage = new ProfessionalLanguage();
-        return response;
+        return result;
     }
 }

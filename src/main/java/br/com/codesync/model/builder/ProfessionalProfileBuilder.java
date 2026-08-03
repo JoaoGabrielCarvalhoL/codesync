@@ -86,8 +86,8 @@ public final class ProfessionalProfileBuilder {
     }
 
     public ProfessionalProfile build() {
-        ProfessionalProfile response = this.professionalProfile;
+        ProfessionalProfile result = this.professionalProfile;
         this.professionalProfile = new ProfessionalProfile();
-        return response;
+        return result;
     }
 }
