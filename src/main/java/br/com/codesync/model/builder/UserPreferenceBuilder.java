@@ -43,8 +43,8 @@ public final class UserPreferenceBuilder {
     }
 
     public UserPreference build() {
-        UserPreference response = this.userPreference;
+        UserPreference result = this.userPreference;
         this.userPreference = new UserPreference();
-        return response;
+        return result;
     }
 }

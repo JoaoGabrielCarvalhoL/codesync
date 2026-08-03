@@ -79,8 +79,8 @@ public final class UserAccessBuilder {
     }
 
     public UserAccess build() {
-        UserAccess response = this.userAccess;
+        UserAccess result = this.userAccess;
         this.userAccess = new UserAccess();
-        return response;
+        return result;
     }
 }

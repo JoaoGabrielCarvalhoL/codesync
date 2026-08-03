@@ -1,6 +1,7 @@
 package br.com.codesync.model.builder;
 
 import br.com.codesync.model.entity.Address;
+import br.com.codesync.model.entity.User;
 import br.com.codesync.model.enumerations.AddressType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -26,6 +27,7 @@ class AddressBuilderTest {
                 .state("SP")
                 .country("Brasil")
                 .type(AddressType.COMMERCIAL)
+                .user(new User())
                 .build();
 
         Assertions.assertAll(
@@ -38,7 +40,8 @@ class AddressBuilderTest {
                 () -> Assertions.assertEquals("São Paulo", address.getCity()),
                 () -> Assertions.assertEquals("SP", address.getState()),
                 () -> Assertions.assertEquals("Brasil", address.getCountry()),
-                () -> Assertions.assertEquals(AddressType.COMMERCIAL, address.getType()));
+                () -> Assertions.assertEquals(AddressType.COMMERCIAL, address.getType()),
+                () -> Assertions.assertNotNull(address.getUser()));
     }
 
     @Test

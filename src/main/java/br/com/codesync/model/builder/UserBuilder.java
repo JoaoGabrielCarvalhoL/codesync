@@ -47,8 +47,8 @@ public final class UserBuilder {
     }
 
     public User build() {
-        User response = this.user;
+        User result = this.user;
         this.user = new User();
-        return response;
+        return result;
     }
 }

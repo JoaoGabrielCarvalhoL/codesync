@@ -33,8 +33,8 @@ public final class SkillBuilder {
     }
 
     public Skill build() {
-        Skill response = this.skill;
+        Skill result = this.skill;
         this.skill = new Skill();
-        return response;
+        return result;
     }
 }

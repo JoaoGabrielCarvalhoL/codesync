@@ -5,7 +5,7 @@ import br.com.codesync.model.entity.User;
 
 import java.util.UUID;
 
-public class NotificationSettingBuilder {
+public final class NotificationSettingBuilder {
 
     private NotificationSetting notificationSetting;
 
@@ -48,8 +48,8 @@ public class NotificationSettingBuilder {
     }
 
     public NotificationSetting build() {
-        NotificationSetting setting = this.notificationSetting;
+        NotificationSetting result = this.notificationSetting;
         this.notificationSetting = new NotificationSetting();
-        return setting;
+        return result;
     }
 }
