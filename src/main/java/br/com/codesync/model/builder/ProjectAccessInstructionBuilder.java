@@ -13,7 +13,7 @@ public final class ProjectAccessInstructionBuilder {
         this.projectAccessInstruction = new ProjectAccessInstruction();
     }
 
-    public static ProjectAccessInstructionBuilder create() {
+    public static ProjectAccessInstructionBuilder builder() {
         return new ProjectAccessInstructionBuilder();
     }
 
