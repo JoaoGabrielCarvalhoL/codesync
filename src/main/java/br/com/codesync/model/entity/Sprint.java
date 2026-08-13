@@ -8,7 +8,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 @Entity
-@Table(name = "tb_sprint")
+@Table(name = "tb_sprints")
 public class Sprint extends Auditable {
 
     @Id

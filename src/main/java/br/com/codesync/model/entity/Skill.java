@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 @Entity
-@Table(name = "tb_skill")
+@Table(name = "tb_skills")
 public class Skill extends Auditable {
 
     @Id

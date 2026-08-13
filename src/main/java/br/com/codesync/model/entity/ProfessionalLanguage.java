@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 @Entity
-@Table(name = "tb_profile_language")
+@Table(name = "tb_professional_languages")
 public class ProfessionalLanguage extends Auditable {
 
     @Id

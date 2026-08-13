@@ -3,7 +3,6 @@ package br.com.codesync.model.entity;
 import br.com.codesync.model.enumerations.AccessStatus;
 import jakarta.persistence.*;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
@@ -51,8 +50,6 @@ public class UserAccess extends Auditable {
     private AccessStatus accessStatus;
 
     private LocalDateTime lastAccessAt;
-
-    private LocalDateTime createdAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(nullable = false, name = "user_id")
@@ -156,25 +153,12 @@ public class UserAccess extends Auditable {
         this.lastAccessAt = lastAccessAt;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    @PrePersist
-    private void setupCreatedAt() {
-        setCreatedAt(LocalDateTime.now());
     }
 
     @Override
