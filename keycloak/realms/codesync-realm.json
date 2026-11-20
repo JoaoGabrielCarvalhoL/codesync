@@ -15,65 +15,57 @@
           "value": "development",
           "temporary": false
         }
-      ],
-      "realmRoles": ["ADMIN"]
-    }, 
-	{
-	      "username": "usercruz",
-	      "enabled": true,
-	      "emailVerified": true,
-	      "firstName": "Carvalho",
-	      "lastName": "Cruz",
-	      "email": "support@codesync.com",
-	      "credentials": [
-	        {
-	          "type": "password",
-	          "value": "development",
-	          "temporary": false
-	        }
-	      ],
-	      "realmRoles": ["USER"]
-	}
+      ]
+    },
+    {
+      "username": "support@codesync",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Support",
+      "lastName": "Codesync",
+      "email": "support@codesync.com",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "development",
+          "temporary": false
+        }
+      ]
+    }
   ],
-  "roles": {
-    "realm": [
-      {
-        "name": "ADMIN"
-      },
-      {
-        "name": "MANAGER"
-      },
-	  {
-	    "name": "USER"
-	  }
-    ]
-  },
   "clients": [
     {
       "clientId": "codesync-app",
       "enabled": true,
       "protocol": "openid-connect",
-      "clientAuthenticatorType": "client-secret",
       "publicClient": true,
-      "bearerOnly": false,
       "standardFlowEnabled": true,
-      "directAccessGrantsEnabled": true,
+      "directAccessGrantsEnabled": false,
       "serviceAccountsEnabled": false,
       "authorizationServicesEnabled": false,
-      "redirectUris": ["http://localhost:4200/*"],
-      "webOrigins": ["http://localhost:4200"]
-	}, 
-	{
-      "clientId": "codesync-backend",
-      "enabled": true,
-      "protocol": "openid-connect",
-      "publicClient": false,
-      "secret": "Zp2Fw4Ei4lFq96GaEdAehSqCcp4epBHj",
-      "serviceAccountsEnabled": true,
-      "standardFlowEnabled": false,
-      "directAccessGrantsEnabled": true,
-      "authorizationServicesEnabled": false
+      "redirectUris": [
+        "http://localhost:4200/*"
+      ],
+      "webOrigins": [
+        "http://localhost:4200"
+      ],
+      "attributes": {
+        "pkce.code.challenge.method": "S256"
+      },
+      "protocolMappers": [
+        {
+          "name": "codesync-api-audience",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "consentRequired": false,
+          "config": {
+            "included.custom.audience": "codesync-api",
+            "access.token.claim": "true",
+            "id.token.claim": "false",
+            "userinfo.token.claim": "false"
+          }
+        }
+      ]
     }
-]
-
+  ]
 }

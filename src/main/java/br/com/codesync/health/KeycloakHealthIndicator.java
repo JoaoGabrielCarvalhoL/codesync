@@ -1,10 +1,11 @@
 package br.com.codesync.health;
 
-import org.jspecify.annotations.Nullable;
+import java.time.Duration;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.health.contributor.Health;
 import org.springframework.boot.health.contributor.HealthIndicator;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.JdkClientHttpRequestFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 
@@ -12,42 +13,40 @@ import org.springframework.web.client.RestClient;
 public class KeycloakHealthIndicator implements HealthIndicator {
 
     private final RestClient restClient;
-    private final String keycloakBaseUrl;
+    private final String issuerUri;
 
     public KeycloakHealthIndicator(
-                                   @Value("${keycloak-api.url}") String keycloakBaseUri) {
-        this.keycloakBaseUrl = keycloakBaseUri;
-        this.restClient = RestClient.builder().baseUrl(keycloakBaseUri).build();
+            @Value("${spring.security.oauth2.resourceserver.jwt.issuer-uri}")
+            String issuerUri) {
+
+        this.issuerUri = issuerUri;
+
+        JdkClientHttpRequestFactory requestFactory =
+                new JdkClientHttpRequestFactory();
+
+        requestFactory.setReadTimeout(Duration.ofSeconds(3));
+
+        this.restClient = RestClient.builder()
+                .baseUrl(issuerUri)
+                .requestFactory(requestFactory)
+                .build();
     }
 
     @Override
-    public @Nullable Health health() {
-        if (this.keycloakBaseUrl == null || this.keycloakBaseUrl.isBlank()) {
-            return Health.down()
-                    .withDetail("reason", "OIDC URL not configured")
-                    .build();
-        }
-
+    public Health health() {
         try {
-            ResponseEntity<Void> response = restClient.get()
-                    .uri("/realms/master/.well-known/openid-configuration")
+            restClient.get()
+                    .uri("/.well-known/openid-configuration")
                     .retrieve()
                     .toBodilessEntity();
 
-            if (response.getStatusCode().is2xxSuccessful()) {
-                return Health.up()
-                        .withDetail("url", this.keycloakBaseUrl)
-                        .build();
-            } else {
-                return Health.down()
-                        .withDetail("status", response.getStatusCode().value())
-                        .build();
-            }
+            return Health.up()
+                    .withDetail("issuer", issuerUri)
+                    .build();
 
-        } catch (Exception e) {
+        } catch (Exception exception) {
             return Health.down()
-                    .withDetail("error", e.getClass().getSimpleName())
-                    .withDetail("message", e.getMessage())
+                    .withDetail("error", exception.getClass().getSimpleName())
                     .build();
         }
     }
