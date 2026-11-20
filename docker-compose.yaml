@@ -95,7 +95,7 @@ services:
 
 volumes:
   keycloak-data:
-  postgres-lumio-data:
+  postgres-data:
   localstack-data:
   rabbitmq_data:
 
